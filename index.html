@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculator Arena</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#1e1e2f;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* Popup screen */
+#welcomeScreen{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(45deg, red, orange, yellow, green, blue, purple);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:white;
+    text-align:center;
+}
+
+#welcomeScreen h1{
+    font-size:40px;
+    text-shadow:2px 2px 10px black;
+}
+
+#welcomeScreen button{
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    background:black;
+    color:white;
+    cursor:pointer;
+}
+
+/* Calculator */
+.calculator{
+    display:none;
+    background:#2c2c3e;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.6);
+}
+
+#display{
+    width:100%;
+    height:50px;
+    font-size:22px;
+    margin-bottom:10px;
+    text-align:right;
+    padding:5px;
+    border:none;
+    border-radius:5px;
+}
+
+.buttons{
+    display:grid;
+    grid-template-columns:repeat(4,60px);
+    gap:10px;
+}
+
+button.calc{
+    height:50px;
+    font-size:18px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    background:#444;
+    color:white;
+}
+
+button.calc:hover{
+    background:#666;
+}
+
+.equal{
+    background:#ff9500;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Welcome Popup -->
+<div id="welcomeScreen">
+<h1>WELCOME TO THE CALCULATOR ARENA OF ARYAN</h1>
+<button onclick="startCalculator()">Enter Arena</button>
+</div>
+
+<!-- Calculator -->
+<div class="calculator" id="calculator">
+<input type="text" id="display" disabled>
+
+<div class="buttons">
+<button class="calc" onclick="add('7')">7</button>
+<button class="calc" onclick="add('8')">8</button>
+<button class="calc" onclick="add('9')">9</button>
+<button class="calc" onclick="add('/')">/</button>
+
+<button class="calc" onclick="add('4')">4</button>
+<button class="calc" onclick="add('5')">5</button>
+<button class="calc" onclick="add('6')">6</button>
+<button class="calc" onclick="add('*')">*</button>
+
+<button class="calc" onclick="add('1')">1</button>
+<button class="calc" onclick="add('2')">2</button>
+<button class="calc" onclick="add('3')">3</button>
+<button class="calc" onclick="add('-')">-</button>
+
+<button class="calc" onclick="add('0')">0</button>
+<button class="calc" onclick="clearDisplay()">C</button>
+<button class="calc equal" onclick="calculate()">=</button>
+<button class="calc" onclick="add('+')">+</button>
+</div>
+</div>
+
+<script>
+function startCalculator(){
+    document.getElementById("welcomeScreen").style.display="none";
+    document.getElementById("calculator").style.display="block";
+}
+
+function add(value){
+    document.getElementById("display").value += value;
+}
+
+function clearDisplay(){
+    document.getElementById("display").value="";
+}
+
+function calculate(){
+    let result=document.getElementById("display").value;
+    document.getElementById("display").value=eval(result);
+}
+</script>
+
+</body>
+</html>
